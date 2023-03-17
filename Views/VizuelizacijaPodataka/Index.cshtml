@@ -1,0 +1,39 @@
+﻿@model List<Test_DataVisualization.Models.Radnik>
+@{
+    ViewBag.Title = "Vizuelizacija Podataka ";
+}
+
+<div class="page-header">
+    <h1>Vizuelizacija Podataka <small> Stefan Milovanović</small></h1>
+</div>
+
+<img src="~/img/grafik.png" class="img-responsive" alt="grafik" />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ime i prezime</th>
+            <th>Sati rada</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var radnik in Model)
+        {
+            string ime = string.IsNullOrEmpty(radnik.ImePrezime) ? "Anonimus" : radnik.ImePrezime;
+            if (radnik.SatiRada < 100)
+            {
+                <tr class="danger">
+                    <td>@ime</td>
+                    <td>@radnik.SatiRada</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@ime</td>
+                    <td>@radnik.SatiRada</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
